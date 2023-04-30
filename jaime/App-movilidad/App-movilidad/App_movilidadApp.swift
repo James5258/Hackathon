@@ -14,6 +14,8 @@ struct App_movilidadApp: App {
     
     var body: some Scene {
         WindowGroup {
+            //MapSection()
+            //    .environment(\.managedObjectContext,dataController.container.viewContext)
             vista1()
                 .environment(\.managedObjectContext,dataController.container.viewContext)
         }

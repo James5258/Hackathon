@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import MapKit
+
 
 struct vista1: View {
     @Environment(\.managedObjectContext) var managedObjContext
@@ -99,10 +101,15 @@ struct IniciarSesion: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
 
-                
                 Button(action: {
                     if let resp = DataControllerDB().loadUserByEmailPassword(email: username, password: password, context: managedObjContext){
                         print("Login Ok")
+                        
+                        NavigationLink(destination: MapSection()) {
+                                            
+                                        }
+                        
+                        //MapSection().environment(\.managedObjectContext,managedObjContext)
                     }
                 }) {
                     Text("Iniciar sesión")
@@ -222,7 +229,57 @@ struct SignUp: View {
     }
 }
 
+struct MapView: UIViewRepresentable {
+    func makeUIView(context: Context) -> MKMapView {
+        MKMapView(frame: .zero)
+    }
+    
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        let coordinate = CLLocationCoordinate2D(
+            latitude: 19.460_620, longitude: -99.064_520)
+        let region = MKCoordinateRegion(
+            center: coordinate,
+            latitudinalMeters: 100_000, longitudinalMeters: 100_000)
+        uiView.setRegion(region, animated: true)
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        annotation.title = "Some Title"
+        uiView.addAnnotation(annotation)
+        
+        uiView.showsUserLocation = true
+    }
+}
 
+struct MapSection: View {
+    //@Environment(\.managedObjectContext) var managedObjContext
+    
+    var body: some View {
+        ZStack{
+            Color.white
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center) {
+                MapView()
+                    .edgesIgnoringSafeArea(.all)
+                
+                Button(action: {
+                    
+                    
+                }) {
+                    Text("Alerta en puntos")
+                        .foregroundColor(.white)
+                        .font(.headline)
+                        .frame(width: 200, height: 50)
+                        .background(Color("main-buttons"))
+                        .cornerRadius(10)
+                }
+                .padding()
+                
+            }
+        }
+    }
+}
 
 
 
