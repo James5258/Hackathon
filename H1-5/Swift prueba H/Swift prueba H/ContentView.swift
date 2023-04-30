@@ -26,16 +26,53 @@ struct ContentView: View {
                             .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
                             .frame(width: 85.0, height: 85.0)
                             .position(x:60,y:-350)
-                        HStack{ 
+                        HStack{
+                            Rectangle()
+                                    .ignoresSafeArea()
+                                    .foregroundColor(Color(.green))
+                                    .frame(width: 170, height: 150)
+                                    .cornerRadius(20)
+                                    .position(x:100,y:-120)
+                            Rectangle()
+                                    .ignoresSafeArea()
+                                    .foregroundColor(Color(.gray))
+                                    .frame(width: 170, height: 150)
+                                    .cornerRadius(20)
+                                    .position(x:192,y:-120)
+                            Rectangle()
+                                    .ignoresSafeArea()
+                                    .foregroundColor(Color(.gray))
+                                    .frame(width: 170, height: 150)
+                                    .cornerRadius(20)
+                                    .position(x:-100,y:150)
+                            Rectangle()
+                                    .ignoresSafeArea()
+                                    .foregroundColor(Color(.green))
+                                    .frame(width: 170, height: 150)
+                                    .cornerRadius(20)
+                                    .position(x:-8,y:150)
                             
+                            
+                                        
                         }
-                        
                     Rectangle()
                             .ignoresSafeArea()
                             .foregroundColor(Color("beish"))
                             .frame(width: 389, height: 90)
                             .cornerRadius(20)
                             .position(x:196,y:360)
+                        Rectangle()
+                                .ignoresSafeArea()
+                                .foregroundColor(Color(.green))
+                                .frame(width: 70, height: 50)
+                                .cornerRadius(20)
+                                .position(x:110,y:360)
+                        Rectangle()
+                                .ignoresSafeArea()
+                                .foregroundColor(Color(.green))
+                                .frame(width: 70, height: 50)
+                                .cornerRadius(20)
+                                .position(x:270,y:360)
 
                 }
             }
