@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct App_movilidadApp: App {
+    
+    @StateObject private var dataController = DataControllerDB()
+    
     var body: some Scene {
         WindowGroup {
             vista1()
+                .environment(\.managedObjectContext,dataController.container.viewContext)
         }
     }
 }
