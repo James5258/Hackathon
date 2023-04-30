@@ -25,7 +25,7 @@ struct vista1: View {
                     .frame(width: 393, height: 100)
                     
             }.ignoresSafeArea()
-            VStack(alignment: .center){
+            
                 if showLogin {
                     IniciarSesion()
                 }
@@ -45,7 +45,7 @@ struct vista1: View {
                             withAnimation {
                                 showLogin = true
                             }
-                        }
+                        } 
                         .foregroundColor(.black)
                         .frame(width: 150,height: 50)
                         .background(Color("main-buttons").opacity(0.6))
@@ -63,8 +63,11 @@ struct vista1: View {
                     }
                     .transition(.opacity)
                     .opacity(showLogin ? 0 : 1)
+                    
+                    .transition(.opacity)
+                    .opacity(showSignUp ? 0 : 1)
                 }
-            }
+            
             
         }
     }
@@ -90,6 +93,10 @@ struct IniciarSesion: View {
                     
                     Spacer()
                     
+                    Rectangle()
+                        .fill(Color("main-banners"))
+                        .frame(width: 393, height: 100)
+                    
                 }.ignoresSafeArea()
                 
                 VStack(alignment: .center){
@@ -111,8 +118,9 @@ struct IniciarSesion: View {
                             .frame(width: 200, height: 50)
                             .background(Color("main-buttons"))
                             .cornerRadius(10)
-                    }
-                }
+                    } .transition(.opacity)
+                        .opacity(showMenu ? 0 : 1)
+                } 
             }
         }
     }
@@ -186,7 +194,7 @@ struct SignUp: View {
                             .frame(width: 200, height: 50)
                             .background(Color("main-buttons"))
                             .cornerRadius(10)
-                    }
+                    } 
                     .padding()
                     
                 }
@@ -198,6 +206,138 @@ struct SignUp: View {
 
 
 struct Menu1: View {
+    @State var showLogin = false
+    var body: some View {
+        ZStack{Color.white
+                .ignoresSafeArea()
+            if showLogin{
+                IniciarSesion()
+            }
+            VStack{
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 130)
+                Spacer()
+                Rectangle()
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 100)
+                    
+            }.ignoresSafeArea()
+            
+            VStack(){
+                Image("logo")
+                    .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                    .frame(width: 85.0, height: 85.0)
+                HStack{
+                                                    
+                    Rectangle()
+                                                    .ignoresSafeArea()
+                                                    .foregroundColor(Color(.gray))
+                                                    .frame(width: 170, height: 150)
+                                                    .cornerRadius(20)
+                    
+                                                    
+                    Rectangle()
+                                                    .ignoresSafeArea()
+                                                    .foregroundColor(Color(.gray))
+                                                    .frame(width: 170, height: 150)
+                                                    .cornerRadius(20)
+                                                    
+                    
+                                            
+                       
+                        
+                
+                }
+            }
+        }
+    }
+}
+
+struct Menu2: View {
+    var body: some View {
+        ZStack{Color.white
+                .ignoresSafeArea()
+           
+            VStack{
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 130)
+                Spacer()
+                Rectangle()
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 100)
+                    
+            }.ignoresSafeArea()
+            
+            VStack(){
+                Image("logo")
+                    .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                    .frame(width: 85.0, height: 85.0)
+                Text("a")
+               
+            }
+        }
+    }
+}
+
+struct Menu3: View {
+    var body: some View {
+        ZStack{Color.white
+                .ignoresSafeArea()
+           
+            VStack{
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 130)
+                Spacer()
+                Rectangle()
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 100)
+                    
+            }.ignoresSafeArea()
+            
+            VStack(){
+                Image("logo")
+                    .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                    .frame(width: 85.0, height: 85.0)
+                Text("a")
+               
+            }
+        }
+    }
+}
+
+struct Menu4: View {
+    
+    var body: some View {
+        ZStack{Color.white
+                .ignoresSafeArea()
+            
+            VStack{
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 130)
+                Spacer()
+                Rectangle()
+                    .fill(Color("main-banners"))
+                    .frame(width: 393, height: 100)
+                    
+            }.ignoresSafeArea()
+            
+            VStack(){
+                Image("logo")
+                    .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
+                    .frame(width: 85.0, height: 85.0)
+                Text("a")
+               
+            }
+        }
+    }
+}
+
+struct Menu5: View {
+    @State var showLogin = false
     var body: some View {
         ZStack{Color.white
                 .ignoresSafeArea()
@@ -216,6 +356,7 @@ struct Menu1: View {
                 Image("logo")
                     .resizable(capInsets: EdgeInsets(), resizingMode: .stretch)
                     .frame(width: 85.0, height: 85.0)
+                Text("a")
                
             }
         }
