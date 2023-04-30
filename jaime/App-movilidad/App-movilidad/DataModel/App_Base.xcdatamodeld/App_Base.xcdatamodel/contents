@@ -8,7 +8,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
-        <attribute name="preferred_location" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="preferred_location" optional="YES" attributeType="String"/>
         <attribute name="t_bicycle" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="t_car" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="t_motorcycle" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>

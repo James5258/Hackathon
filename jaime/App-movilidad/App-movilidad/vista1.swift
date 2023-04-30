@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct vista1: View {
+    @Environment(\.managedObjectContext) var managedObjContext
     @State var showLogin = false
     @State var showSignUp = false
     
@@ -27,10 +28,10 @@ struct vista1: View {
             }.ignoresSafeArea()
             VStack(alignment: .center){
                 if showLogin {
-                    IniciarSesion()
+                    IniciarSesion().environment(\.managedObjectContext,managedObjContext)
                 }
                 if showSignUp{
-                    SignUp()
+                    SignUp().environment(\.managedObjectContext,managedObjContext)
                 }else {
                     VStack(alignment: .center, spacing: 20) {
                         Spacer()
@@ -71,6 +72,7 @@ struct vista1: View {
 }
 
 struct IniciarSesion: View {
+    @Environment(\.managedObjectContext) var managedObjContext
     @State var username=""
     @State var password=""
     
@@ -99,7 +101,9 @@ struct IniciarSesion: View {
 
                 
                 Button(action: {
-                    // Acción para iniciar sesión
+                    if let resp = DataControllerDB().loadUserByEmailPassword(email: username, password: password, context: managedObjContext){
+                        print("Login Ok")
+                    }
                 }) {
                     Text("Iniciar sesión")
                         .foregroundColor(.white)
@@ -114,6 +118,7 @@ struct IniciarSesion: View {
 }
 
 struct SignUp: View {
+    @Environment(\.managedObjectContext) var managedObjContext
     @State var nombre=""
     @State var edad=""
     @State var genero=""
@@ -167,6 +172,41 @@ struct SignUp: View {
                 
                 Button(action: {
                     // Acción para registrar al usuario
+                    var edad_int = 0
+                    if let value = Int32(edad){
+                        edad_int = Int(value)
+                    }
+                    
+                    var t_car = false
+                    var t_motorcycle = false
+                    var t_scooter = false
+                    var t_bicycle = false
+                    var t_walking = false
+
+                    switch tipoVehiculo {
+                    case "Auto":
+                        t_car = true
+                    case "Moto":
+                        t_motorcycle = true
+                    case "Scooter":
+                        t_scooter = true
+                    case "Bicicleta":
+                        t_bicycle = true
+                    case "Caminando":
+                        t_walking = true
+                    default:
+                        t_car = false
+                        t_motorcycle = false
+                        t_scooter = false
+                        t_bicycle = false
+                        t_walking = false
+                    }
+
+                    
+                    if let resp = DataControllerDB().addUser(name: nombre, age: Int32(edad_int), gender: genero, email: correo, cell_phone: telefono, t_car: t_car, t_motorcycle: t_motorcycle, t_scooter: t_scooter, t_bicycle: t_bicycle, t_walking: t_walking, preferred_location: delegacion, password: password, context: managedObjContext){
+                        print("Usuario Registrado")
+                    }
+                    
                 }) {
                     Text("Registrarse")
                         .foregroundColor(.white)
